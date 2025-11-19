@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -27,6 +27,10 @@ def update_item(index):
     if index < len(items):
         items[index] = request.form.get('new_item')
     return redirect(url_for('index'))
+
+def capitalize_item(item: str) -> str:
+    """Utility function used for unit testing."""
+    return item.strip().capitalize()
 
 if __name__ == '__main__':
     app.run(debug=True)
